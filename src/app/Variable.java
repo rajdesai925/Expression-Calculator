@@ -3,9 +3,6 @@ package app;
 /**
  * This class holds a (name, integer value) pair for a simple (non-array) variable. 
  * The variable name is a sequence of one or more letters.
- * 
- * @author ru-nb-cs112
- *
  */
 public class Variable {
 	
