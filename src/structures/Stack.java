@@ -5,8 +5,6 @@ import java.util.NoSuchElementException;
 
 /**
  * A generic stack implementation.
- * 
- * @author ru-nb-cs111
  *
  * @param <T> Parameter type for items in the stack.
  */
