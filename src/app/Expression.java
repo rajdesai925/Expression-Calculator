@@ -205,22 +205,14 @@ public class Expression {
     				if (solution < 0) {
     					temp = '!' + temp.substring(1);
     				}
-    				//System.out.println("tttttttt2 >  " + temp);
     				s = s.substring(0, open.peek()) + temp + s.substring(i + 1);
-    				//System.out.println("returning1 :  " + s);
     				open.pop();
     				return evaluate(s, vars, arrays);
     			} else if (s.charAt(i) == ']') {			//arrays
     				tempSol = (int) solution;
     				int x = open.pop();
-    				//System.out.println("tempsol ====  " + tempSol);
-    				//System.out.println("xxxxxxxxxx>   " + x);
-    				//System.out.println("open.peek >   " + open.peek());
-    				//System.out.println("close.peek >   " + close.peek());
-    				//System.out.println("ops.peek >   " + ops.peek() + "      oooooo> " + o);
     				if (o > open.peek() && o > close.peek()) {
     					temp = s.substring(o + 1, x);
-    					//System.out.println("ooooooooo>  " + temp);
     					for (int k = 0; k < arrays.size(); k++) {
     						if (arrays.get(k).name.equals(temp)) {
     							if (arrays.get(k).values[tempSol] < 0) {
@@ -235,7 +227,6 @@ public class Expression {
     					}
     				} else if (open.peek() > o && open.peek() > close.peek()) {
     					temp = s.substring(open.peek() + 1, x);
-    					//System.out.println("ooooopppppp>  " + temp);
     					for (int k = 0; k < arrays.size(); k++) {
     						if (arrays.get(k).name.equals(temp)) {
     							if (arrays.get(k).values[tempSol] < 0) {
@@ -250,7 +241,6 @@ public class Expression {
     					}
     				} else if (close.peek() > o && close.peek() > open.peek()) {
     					temp = s.substring(close.peek() + 1, x);
-    					//System.out.println("ccccccccccc>  " + temp);
     					for (int k = 0; k < arrays.size(); k++) {
     						if (arrays.get(k).name.equals(temp)) {
     							if (arrays.get(k).values[tempSol] < 0) {
@@ -265,7 +255,6 @@ public class Expression {
     					}
     				} else if (close.peek() == -1 && open.peek() == -1 && o == -1) {
     					temp = s.substring(0, x); 
-    					//System.out.println("-----1111111>  " + temp);
     					for (int k = 0; k < arrays.size(); k++) {
     						if (arrays.get(k).name.equals(temp)) {
     							if (arrays.get(k).values[tempSol] < 0) {
@@ -305,10 +294,8 @@ public class Expression {
     		if (temp.charAt(0) == ' ') {
     			continue;
     		}
-    		//System.out.println("0000000>  " + temp);
     		if (Character.isDigit(temp.charAt(0))) {
     			num.push(Float.parseFloat(temp));
-    			//System.out.println("nnnnnnn>  " + num.peek());
     		} else if (temp.charAt(0) == '!') {
     			temp = temp.substring(1);
     			num.push(Float.parseFloat(temp) * -1);
@@ -334,7 +321,6 @@ public class Expression {
         					}
     	    			}		
     	    		}
-    				//System.out.println("nnnnnn1>  " + num.peek());
     				num2 = num.pop();
     				num1 = num.pop();
     				num.push(num1 * num2);
@@ -352,7 +338,6 @@ public class Expression {
         					}
     	    			}		
     	    		}
-    				//System.out.println("nnnnnn2>  " + num.peek());
     				num2 = num.pop();
     				num1 = num.pop();
     				num.push(num1 / num2);
@@ -375,7 +360,6 @@ public class Expression {
     	}
     	
     	//evaluates + and -
-    	//System.out.println("ppppppppppppp>   " + numRev.peek());
     	while (opsRev.isEmpty() == false) {
     		num2 = numRev.pop();
     		num1 = numRev.pop();
@@ -386,7 +370,6 @@ public class Expression {
     			numRev.push(num2 - num1);
     		}
     	}
-    	System.out.println("solve returns>   " + numRev.peek());
 
     	return numRev.peek();
     	
